@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 // import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { getGitHubComponent } from './getGitHub.component';
 import { ProductsComponent } from './products.component';
 import { ProductComponent } from './product.component';
 import { ProductService } from './product.service';
@@ -17,14 +18,15 @@ import { LoginComponent } from './login.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { LoginService } from './login.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent,ProductsComponent,RatingComponent,ProductComponent,
+    AppComponent,getGitHubComponent,ProductsComponent,RatingComponent,ProductComponent,
     TruncatePipe,UserFormComponent,LoginComponent
   ],
   imports: [
-    BrowserModule,FormsModule,ReactiveFormsModule
+    BrowserModule,FormsModule,ReactiveFormsModule,HttpClientModule
   ],
   providers: [ProductService,LoginService],
   bootstrap: [AppComponent]
