@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { filter,debounceTime,distinctUntilChanged } from 'rxjs/operators';
 
 @Component({
-  selector: 'getGitHub',
+  selector: '<getGitHub>',
   template: `
     <input class="form-control" type="search" [formControl]="searchControl">
     <h3>GitHub User Results</h3>
@@ -13,7 +13,7 @@ import { filter,debounceTime,distinctUntilChanged } from 'rxjs/operators';
     </div>
 
     <div class="d-flex align-items-center mt-4" *ngFor="let user of users">
-      <a href="{{ user.html_url }}" class="flex-shrink-0">
+      <a [routerLink]="['user',user.login,user.score]" class="flex-shrink-0">
           <img class="mr-3" src="{{ user.avatar_url }}" alt="" width="64" height="64">
       </a>
       <div class="flex-grow-1 ms-3">
@@ -44,8 +44,9 @@ export class getGitHubComponent {
         this._gitHubService.getGitHubData(value)
         .subscribe(
           data => {
-          this.isLoading = false;
-          this.users = data.items;
+            this.isLoading = false;
+            console.log(data.items)
+            this.users = data.items;
         });
       });
   }
